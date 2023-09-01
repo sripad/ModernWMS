@@ -2,7 +2,12 @@
 <template>
   <div class="container">
     <div>
-      <v-tabs v-model="data.activeTab" stacked @update:model-value="method.changeTabs">
+      <v-tabs
+        v-model="data.activeTab"
+        stacked
+        @update:model-value="method.changeTabs"
+        class="d-mode-tabs"
+      >
         <v-tab v-for="(item, index) of tabsConfig" :key="index" :value="item.value">
           <v-icon>{{ item.icon }}</v-icon>
           <p class="tabItemTitle">{{ item.tabName }}</p>
@@ -30,67 +35,67 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, onMounted, watch, nextTick } from 'vue'
-import i18n from '@/languages/i18n'
-import tabWarehouse from './tab-warehouse.vue'
-import tabReservoir from './tab-reservoir.vue'
-import tabLocation from './tab-location.vue'
+import { ref, reactive, onMounted, watch, nextTick } from "vue";
+import i18n from "@/languages/i18n";
+import tabWarehouse from "./tab-warehouse.vue";
+import tabReservoir from "./tab-reservoir.vue";
+import tabLocation from "./tab-location.vue";
 
-const tabWarehouseRef = ref()
-const tabReservoirRef = ref()
-const tabLocationRef = ref()
+const tabWarehouseRef = ref();
+const tabReservoirRef = ref();
+const tabLocationRef = ref();
 
 const tabsConfig = [
   {
-    value: 'tabWarehouse',
-    icon: 'mdi-warehouse',
-    tabName: i18n.global.t('base.warehouseSetting.warehouseSetting')
+    value: "tabWarehouse",
+    icon: "mdi-warehouse",
+    tabName: i18n.global.t("base.warehouseSetting.warehouseSetting"),
   },
   {
-    value: 'tabReservoir',
-    icon: 'mdi-texture-box',
-    tabName: i18n.global.t('base.warehouseSetting.reservoirSetting')
+    value: "tabReservoir",
+    icon: "mdi-texture-box",
+    tabName: i18n.global.t("base.warehouseSetting.reservoirSetting"),
   },
   {
-    value: 'tabLocation',
-    icon: 'mdi-library-shelves ',
-    tabName: i18n.global.t('base.warehouseSetting.locationSetting')
-  }
-]
+    value: "tabLocation",
+    icon: "mdi-library-shelves ",
+    tabName: i18n.global.t("base.warehouseSetting.locationSetting"),
+  },
+];
 
 const data = reactive({
-  activeTab: '',
+  activeTab: "",
   isLoadWarehouseData: false,
   isLoadReservoirData: false,
-  isLoadLocationData: false
-})
+  isLoadLocationData: false,
+});
 
 const method = reactive({
   changeTabs: (e: any): void => {
     nextTick(() => {
       switch (e) {
-        case 'tabWarehouse':
+        case "tabWarehouse":
           // Tips：Must be write the nextTick so that can get DOM!!
           if (tabWarehouseRef?.value?.getWarehouseList) {
-            tabWarehouseRef.value.getWarehouseList()
+            tabWarehouseRef.value.getWarehouseList();
           }
-          break
-        case 'tabReservoir':
+          break;
+        case "tabReservoir":
           if (tabReservoirRef?.value?.getWarehouseAreaList) {
-            tabReservoirRef.value.getWarehouseAreaList()
+            tabReservoirRef.value.getWarehouseAreaList();
           }
-          break
-        case 'tabLocation':
+          break;
+        case "tabLocation":
           if (tabLocationRef?.value?.getGoodsLocationList) {
-            tabLocationRef.value.getGoodsLocationList()
+            tabLocationRef.value.getGoodsLocationList();
           }
-          break
+          break;
       }
-    })
-  }
-})
+    });
+  },
+});
 
-onMounted(() => {})
+onMounted(() => {});
 </script>
 
 <style scoped lang="less">

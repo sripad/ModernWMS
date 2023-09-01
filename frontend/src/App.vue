@@ -79,5 +79,6 @@ onMounted(() => {
   z-index: 9999;
   width: 100vw;
   height: 100vh;
+  background: #0c1427;
 }
 </style>

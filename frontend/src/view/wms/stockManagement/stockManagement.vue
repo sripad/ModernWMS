@@ -2,7 +2,7 @@
 <template>
   <div class="container">
     <div>
-      <v-tabs v-model="data.activeTab" stacked @update:model-value="method.changeTabs">
+      <v-tabs v-model="data.activeTab" stacked @update:model-value="method.changeTabs" class="d-mode-tabs">
         <v-tab v-for="(item, index) of tabsConfig" :key="index" :value="item.value">
           <v-icon>{{ item.icon }}</v-icon>
           <p class="tabItemTitle">{{ item.tabName }}</p>

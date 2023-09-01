@@ -16,6 +16,20 @@
     </div>
     <div class="ICP" @click="method.toICP"> 闽ICP备2021008548号 </div>
   </div>
+  <div class="loginBg">
+    <div class="loginContent">
+      <div class="loginContentBox">
+        <div class="loginImage">
+          <img src="../../assets/img/loginImage.jpg" />
+        </div>
+        <div class="loginFormWrapper">
+          <div class="auth-form-wrapper">
+            <LoginForm />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -81,5 +95,39 @@ const method = reactive({
     cursor: pointer;
     color: #aaa;
   }
+}
+.loginBg{
+  background: #070d19;
+  height: 100vh;
+}
+.loginContent{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%
+}
+.loginContentBox{
+  display: flex;
+  justify-content: center;
+}
+.loginImage{
+  width: 20%;
+  object-fit: cover;
+    overflow: hidden;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.loginImage img{
+  height: 100%;
+}
+.loginFormWrapper{
+    background: #0c1427;
+  border: 1px solid #172340;
+  border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.auth-form-wrapper{
+  
 }
 </style>
